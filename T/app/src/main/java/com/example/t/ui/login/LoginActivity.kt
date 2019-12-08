@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
+import android.content.Intent
 
 import com.example.t.R
 
@@ -25,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+
+
 
         val username = findViewById<EditText>(R.id.folio)
         val password = findViewById<EditText>(R.id.password)
@@ -93,8 +96,17 @@ class LoginActivity : AppCompatActivity() {
             login.setOnClickListener {
                 loading.visibility = View.VISIBLE
                 loginViewModel.login(username.text.toString(), password.text.toString())
+                startTrackerActivity()
+
+
             }
         }
+    }
+
+
+    private fun startTrackerActivity(){
+        val intent = Intent(this, Tracker :: class.java)
+        startActivity(intent)
     }
 
     private fun updateUiWithUser(model: LoggedInUserView) {
