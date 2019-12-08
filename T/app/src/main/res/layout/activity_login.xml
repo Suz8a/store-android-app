@@ -60,21 +60,17 @@
 
     <Button
         android:id="@+id/login"
-        android:layout_width="232dp"
-        android:layout_height="48dp"
+        android:layout_width="341dp"
+        android:layout_height="52dp"
         android:layout_gravity="start"
-        android:layout_marginStart="48dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginBottom="100dp"
-        android:background="#9B7924"
+        android:background="@drawable/my_button_login"
         android:enabled="true"
         android:text="Buscar"
         android:textColor="@android:color/white"
         android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        tools:layout_editor_absoluteY="454dp" />
 
     <ProgressBar
         android:id="@+id/loading"
