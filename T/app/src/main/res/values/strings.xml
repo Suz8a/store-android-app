@@ -9,4 +9,5 @@
     <string name="invalid_username">Folio invalido</string>
     <string name="invalid_password">Campo requerido</string>
     <string name="login_failed">"Login failed"</string>
+    <string name="Reportar_problema">"Reportar problema</string>
 </resources>
