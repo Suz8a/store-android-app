@@ -8,6 +8,7 @@ import android.widget.Toast
 import android.content.Intent
 
 import com.example.t.R
+import com.github.kittinunf.fuel.Fuel
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : AppCompatActivity() {
@@ -21,9 +22,19 @@ class LoginActivity : AppCompatActivity() {
 
         val folio = findViewById<EditText>(R.id.folio)
 
+        Fuel.get("http://52.170.217.4/api/pedido/search?folio=789856")
+            .response { request, response, result ->
+                println(request)
+                println(response)
+                val (bytes, error) = result
+                if (bytes != null) {
+                    println("[response bytes] ${String(bytes)}")
+                }
+            }
+
 
             login.setOnClickListener {
-                startTrackerActivityReporte(folio.text.toString())
+                startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
             }
 
@@ -43,12 +54,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun startTrackerActivityTaller(folio: String ){
         val intent = Intent(this, Tracker_taller :: class.java)
-        intent.putExtra("folio", folio)
-        startActivity(intent)
-    }
-
-    private fun startTrackerActivityReporte(folio: String ){
-        val intent = Intent(this, Reporte :: class.java)
         intent.putExtra("folio", folio)
         startActivity(intent)
     }
