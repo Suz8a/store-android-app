@@ -1,6 +1,7 @@
 package com.example.t.ui.login
 
 import android.app.Activity
+import android.app.ProgressDialog.show
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -30,25 +31,20 @@ class LoginActivity : AppCompatActivity() {
 
         val folio = findViewById<EditText>(R.id.folio)
 
-        
+
+
 
             login.setOnClickListener {
-                startTrackerActivity(folio.toString())
+                startTrackerActivityTienda()
+                Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
             }
 
         }
 
 
 
-    private fun startTrackerActivity(folio: String ){
+    private fun startTrackerActivity(){
         val intent = Intent(this, Tracker :: class.java)
-        intent.putExtra("folio", folio)
-
-        startActivity(intent)
-    }
-
-    private fun startTrackerActivityTaller(){
-        val intent = Intent(this, Tracker_taller :: class.java)
         startActivity(intent)
     }
 
@@ -56,8 +52,16 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, Tracker_tienda :: class.java)
         startActivity(intent)
     }
-    private fun startTrackerActivityReporte(){
+
+    private fun startTrackerActivityTaller(folio: String ){
+        val intent = Intent(this, Tracker_taller :: class.java)
+        intent.putExtra("folio", folio)
+        startActivity(intent)
+    }
+
+    private fun startTrackerActivityReporte(folio: String ){
         val intent = Intent(this, Reporte :: class.java)
+        intent.putExtra("folio", folio)
         startActivity(intent)
     }
 

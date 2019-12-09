@@ -8,6 +8,7 @@ class Reporte : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val folio:String = intent.getStringExtra("folio")
         setContentView(R.layout.activity_reporte)
     }
 }
