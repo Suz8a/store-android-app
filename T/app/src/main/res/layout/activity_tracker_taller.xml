@@ -80,16 +80,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/image"
         android:layout_width="221dp"
         android:layout_height="221dp"
         android:layout_marginStart="3dp"
         android:layout_marginTop="31dp"
         android:layout_marginEnd="85dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/procesando2"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:layout_constraintTop_toBottomOf="@+id/procesando2" />
+
 
     <TextView
         android:id="@+id/textView"
@@ -101,7 +102,7 @@
         android:text="Ese es el resultado que obtuvimos, esperamos que sea de su agrado."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <Button
         android:id="@+id/btn_reporte"
