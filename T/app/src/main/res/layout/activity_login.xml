@@ -16,54 +16,35 @@
         android:id="@+id/imageView"
         android:layout_width="224dp"
         android:layout_height="56dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/folio"
+        android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/troquel_logo" />
+        app:srcCompat="@drawable/troquel_logo_negro" />
 
     <EditText
         android:id="@+id/folio"
-        android:layout_width="0dp"
+        android:layout_width="296dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="260dp"
-        android:layout_marginEnd="24dp"
 
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="24dp"
         android:hint="Folio"
         android:inputType="number"
         android:selectAllOnFocus="true"
-        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-
-        android:layout_marginBottom="30dp"
-        android:hint="Contraseña"
-        android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionDone"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/folio" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="280dp"
+        android:layout_width="296dp"
         android:layout_height="48dp"
         android:layout_gravity="start"
-        android:layout_marginTop="79dp"
+        android:layout_marginTop="95dp"
         android:background="@drawable/my_button_login"
         android:enabled="true"
         android:text="Buscar"
@@ -71,7 +52,7 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/folio" />
 
     <ProgressBar
         android:id="@+id/loading"
@@ -84,8 +65,8 @@
         android:layout_marginBottom="64dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/password"
-        app:layout_constraintStart_toStartOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="@+id/folio"
+        app:layout_constraintStart_toStartOf="@+id/folio"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3" />
 
