@@ -22,7 +22,7 @@ class LoginActivity : AppCompatActivity() {
 
         val folio = findViewById<EditText>(R.id.folio)
 
-        Fuel.get("http://52.170.217.4/api/pedido/search?folio=789856")
+        Fuel.get("http://52.170.217.4/api/pedido")
             .response { request, response, result ->
                 println(request)
                 println(response)
@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
                     println("[response bytes] ${String(bytes)}")
                 }
             }
+
 
 
             login.setOnClickListener {
