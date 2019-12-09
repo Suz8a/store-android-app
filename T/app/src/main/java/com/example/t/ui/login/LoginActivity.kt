@@ -1,17 +1,7 @@
 package com.example.t.ui.login
 
-import android.app.Activity
-import android.app.ProgressDialog.show
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import android.text.Editable
-import android.text.TextWatcher
-import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -32,10 +22,8 @@ class LoginActivity : AppCompatActivity() {
         val folio = findViewById<EditText>(R.id.folio)
 
 
-
-
             login.setOnClickListener {
-                startTrackerActivityTienda()
+                startTrackerActivityReporte(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
             }
 
