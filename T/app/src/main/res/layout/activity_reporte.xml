@@ -42,26 +42,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <Button
         android:id="@+id/btn_enviar_reporte"
         android:layout_width="300dp"
         android:layout_height="39dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/my_button"
         android:text="@string/Reportar_problema"
         android:textColor="@color/black"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/txt_reporte"
         tools:visibility="visible" />
-
 
     <Button
         android:id="@+id/btn_cancelar_reporte"
         android:layout_width="300dp"
         android:layout_height="39dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginTop="53dp"
         android:background="@drawable/my_button_cancelar"
         android:text="cancelar"
         android:textColor="@color/white"
@@ -72,21 +73,23 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_enviar_reporte"
         tools:visibility="visible" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+    <EditText
+        android:id="@+id/txt_reporte"
         android:layout_width="310dp"
         android:layout_height="200dp"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="65dp"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:background="@drawable/text_box"
+        android:hint="Ingrese descripción del problema"
+        android:inputType="textCapSentences|textNoSuggestions|textMultiLine"
+        android:maxLines="6"
+        android:minLines="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/procesando2" >
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="invisible"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/procesando2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
