@@ -75,7 +75,7 @@
         android:layout_height="82dp"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="42dp"
-        android:text="Su joya ha sido recibido. Por favor, espere mientras procesamos la solicitud de su servicio. Gracias por su preferencia."
+        android:text="Su joya ha sido recibida. Por favor, espere mientras procesamos la solicitud de su servicio. Gracias por su preferencia."
         android:textAlignment="viewStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
