@@ -9,6 +9,7 @@ import android.content.Intent
 import android.util.Log
 
 import com.example.t.R
+import com.example.t.data.Api.ApiClient
 import com.example.t.data.model.Cliente
 import com.example.t.data.model.Pedido
 import com.github.kittinunf.fuel.Fuel
@@ -18,11 +19,18 @@ import com.github.kittinunf.fuel.core.awaitResponse
 import com.github.kittinunf.fuel.httpGet
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     var Clientes = ArrayList<Cliente>()
+
+    //Request
+    var dataList = ArrayList<Cliente>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,17 +42,11 @@ class LoginActivity : AppCompatActivity() {
 
         println("------------------------------------------------------------------------------------")
 
+        getData()
+        println(dataList)
+
 
             login.setOnClickListener {
-                Fuel.get("pedido/search?folio=${folio.text}")
-                    .response { request, response, result ->
-                        println(request)
-                        println(response)
-                        val (bytes, error) = result
-                        if (bytes != null) {
-                            println("[response bytes] ${String(bytes)}")
-                        }
-                    }
 
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
@@ -53,6 +55,20 @@ class LoginActivity : AppCompatActivity() {
 
 
         }
+    private fun getData() {
+        val call: Call<List<Cliente>> = ApiClient.getClient.getClientes()
+        call.enqueue(object : Callback<List<Cliente>> {
+
+            override fun onResponse(call: Call<List<Cliente>>?, response: Response<List<Cliente>>?) {
+                dataList.addAll(response!!.body()!!)
+            }
+
+            override fun onFailure(call: Call<List<Cliente>>?, t: Throwable?) {
+
+            }
+
+        })
+    }
 
 
     private fun startTrackerActivity(){
