@@ -9,7 +9,8 @@
         android:label="Troquel"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ui.login.Tracker"></activity>
         <activity android:name=".ui.login.Tracker_taller"></activity>
         <activity android:name=".ui.login.Tracker_tienda"></activity>

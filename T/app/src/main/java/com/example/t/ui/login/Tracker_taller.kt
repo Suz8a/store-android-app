@@ -20,8 +20,6 @@ class Tracker_taller : AppCompatActivity() {
 
         Picasso.get().load(imageUrl).into(image)
 
-
-
         btn_reporte.setOnClickListener{
             startTrackerActivityReporte(folio)
         }

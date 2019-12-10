@@ -6,41 +6,53 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import android.content.Intent
+import android.util.Log
 
 import com.example.t.R
+import com.example.t.data.model.Cliente
+import com.example.t.data.model.Pedido
 import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.FuelManager
+import com.github.kittinunf.fuel.core.await
+import com.github.kittinunf.fuel.core.awaitResponse
+import com.github.kittinunf.fuel.httpGet
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
+    var Clientes = ArrayList<Cliente>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_login)
+        FuelManager.instance.basePath ="http://52.170.217.4/api/"
 
         val folio = findViewById<EditText>(R.id.folio)
 
-        Fuel.get("http://52.170.217.4/api/pedido")
-            .response { request, response, result ->
-                println(request)
-                println(response)
-                val (bytes, error) = result
-                if (bytes != null) {
-                    println("[response bytes] ${String(bytes)}")
-                }
-            }
-
+        println("------------------------------------------------------------------------------------")
 
 
             login.setOnClickListener {
+                Fuel.get("pedido/search?folio=${folio.text}")
+                    .response { request, response, result ->
+                        println(request)
+                        println(response)
+                        val (bytes, error) = result
+                        if (bytes != null) {
+                            println("[response bytes] ${String(bytes)}")
+                        }
+                    }
+
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
+
             }
 
-        }
 
+        }
 
 
     private fun startTrackerActivity(){
