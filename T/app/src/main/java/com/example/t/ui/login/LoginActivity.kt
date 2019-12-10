@@ -55,26 +55,26 @@ class LoginActivity : AppCompatActivity() {
                 var estadoTaller:String = ""
                 var estadoTienda:String =""
                 var estado:String = ""
+                var imgUrl:String =""
 
                 for ( item in pedidos ){
                     if(item.folio.equals(folioPedido)){
                         estadoTaller = item.estado_taller
                         estadoTienda = item.estado_tienda
                         estado = item.estado
+                        imgUrl = item.link_imagen_taller
                     }
 
                 }
 
                 if(estado.equals("En proceso"))
-                    startTrackerActivityTaller(folio.text.toString())
-                if(estadoTienda.equals("Enviar joya"))
-                    startTrackerActivityTienda()
-                if(estadoTienda.equals("Entregar joya"))
+                    startTrackerActivity()
+                if(estadoTaller.equals("Terminado") && estadoTienda.equals("Recibir joya") )
+                    startTrackerActivityTaller(imgUrl)
+                if(estadoTienda.equals("Entregar joya") && estadoTaller.equals("Terminado") )
                     startTrackerActivityTienda()
 
 
-                //println("============"+clientes)
-                //println("============"+pedidos.find { pedido ->  pedido.folio === folioPedido })
                 println("FOLIOOOOOOOO  "+folioPedido)
 
 
@@ -124,9 +124,9 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun startTrackerActivityTaller(folio: String ){
+    private fun startTrackerActivityTaller(imgUrl: String ){
         val intent = Intent(this, Tracker_taller :: class.java)
-        intent.putExtra("folio", folio)
+        intent.putExtra("imgUrl", imgUrl)
         startActivity(intent)
     }
 

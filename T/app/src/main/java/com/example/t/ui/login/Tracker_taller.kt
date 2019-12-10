@@ -13,15 +13,15 @@ class Tracker_taller : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val folio:String = intent.getStringExtra("folio")
+        val imgUrl:String = intent.getStringExtra("imgUrl")
         setContentView(R.layout.activity_tracker_taller)
         val image = findViewById<ImageView>(R.id.image)
-        val imageUrl: String = "https://webdiag714.blob.core.windows.net/sampleimage/3e25fe7a-f8d2-43e2-ba42-69d6a5ea10b0-.jpg"
+        val imageUrl: String = imgUrl
 
         Picasso.get().load(imageUrl).into(image)
 
         btn_reporte.setOnClickListener{
-            startTrackerActivityReporte(folio)
+            startTrackerActivityReporte(imgUrl)
         }
 
         btn_salir.setOnClickListener{
