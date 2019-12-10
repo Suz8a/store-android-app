@@ -41,16 +41,13 @@ class LoginActivity : AppCompatActivity() {
         val folio = findViewById<EditText>(R.id.folio)
 
 
-        getDataPedidos()
-        getDataClientes()
-
-
 
 
 
             login.setOnClickListener {
+                getDataPedidos()
+                getDataClientes()
 
-                Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
                 val folioPedido = folio.text.toString()
                 var estadoTaller:String = ""
                 var estadoTienda:String =""
@@ -69,10 +66,15 @@ class LoginActivity : AppCompatActivity() {
 
                 if(estado.equals("En proceso"))
                     startTrackerActivity()
+                if(estadoTienda.equals("Recibir joya")  && estadoTaller.equals("Recibir joya"))
+                    startTrackerActivity()
+                if(estadoTienda.equals("Recibir joya")  && estadoTaller.equals("Enviar joya") && estado.equals("En taller") )
+                    startTrackerActivity()
                 if(estadoTaller.equals("Terminado") && estadoTienda.equals("Recibir joya") )
                     startTrackerActivityTaller(imgUrl)
                 if(estadoTienda.equals("Entregar joya") && estadoTaller.equals("Terminado") )
                     startTrackerActivityTienda()
+
 
 
                 println("FOLIOOOOOOOO  "+folioPedido)
