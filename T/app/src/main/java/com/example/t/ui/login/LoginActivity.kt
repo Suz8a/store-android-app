@@ -40,17 +40,29 @@ class LoginActivity : AppCompatActivity() {
 
         val folio = findViewById<EditText>(R.id.folio)
 
-        println("------------------------------------------------------------------------------------")
 
         getDataPedidos()
         getDataClientes()
 
-            login.setOnClickListener {
 
+
+
+
+            login.setOnClickListener {
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
-                println("============"+clientes.get(0))
-                println("============"+pedidos.get(0))
+                val folioPedido = folio.text.toString()
+
+                //println("============"+clientes)
+                //println("============"+pedidos.find { pedido ->  pedido.folio === folioPedido })
+                println("FOLIOOOOOOOO  "+folioPedido)
+                println("PEDIDDOOOOOO  "+pedidos[0].folio)
+
+                for ( item in pedidos ){
+                    if(item.folio.equals(folioPedido))
+                        println(item.estado_taller)
+                }
+
             }
 
 
