@@ -43,13 +43,12 @@ class LoginActivity : AppCompatActivity() {
         println("------------------------------------------------------------------------------------")
 
         getData()
-        println(dataList)
-
 
             login.setOnClickListener {
 
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
+                println("============"+dataList.get(0).id)
 
             }
 

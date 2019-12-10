@@ -26,5 +26,5 @@ data class Cliente(
     val correo: String,
     @Expose
     @SerializedName("telefono")
-    val telefono: Int
+    val telefono: Number
 )
