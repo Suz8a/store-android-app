@@ -26,11 +26,11 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
-    var Clientes = ArrayList<Cliente>()
+
 
     //Request
-    var dataList = ArrayList<Cliente>()
-
+    var clientes = ArrayList<Cliente>()
+    var pedidos = ArrayList<Pedido>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,23 +42,41 @@ class LoginActivity : AppCompatActivity() {
 
         println("------------------------------------------------------------------------------------")
 
-        getData()
+        getDataPedidos()
+        getDataClientes()
 
             login.setOnClickListener {
 
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
-                println("============"+dataList.get(0).id)
+                println("============"+clientes.get(0))
+                println("============"+pedidos.get(0))
             }
 
 
         }
-    private fun getData() {
+
+    private fun getDataPedidos() {
+        val call: Call<List<Pedido>> = ApiClient.getPedido.getPedidos()
+        call.enqueue(object : Callback<List<Pedido>> {
+
+            override fun onResponse(call: Call<List<Pedido>>?, response: Response<List<Pedido>>?) {
+                pedidos.addAll(response!!.body()!!)
+            }
+
+            override fun onFailure(call: Call<List<Pedido>>?, t: Throwable?) {
+
+            }
+
+        })
+    }
+
+    private fun getDataClientes() {
         val call: Call<List<Cliente>> = ApiClient.getClient.getClientes()
         call.enqueue(object : Callback<List<Cliente>> {
 
             override fun onResponse(call: Call<List<Cliente>>?, response: Response<List<Cliente>>?) {
-                dataList.addAll(response!!.body()!!)
+                clientes.addAll(response!!.body()!!)
             }
 
             override fun onFailure(call: Call<List<Cliente>>?, t: Throwable?) {

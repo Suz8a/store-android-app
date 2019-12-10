@@ -67,9 +67,6 @@ data class JoyaObj(
     @SerializedName("peso_joya")
     val peso_joya: Number,
     @Expose
-    @SerializedName("cliente_id")
-    val cliente_id: String,
-    @Expose
     @SerializedName("medida_inicial")
     val medida_inicial: Number?,
     @Expose

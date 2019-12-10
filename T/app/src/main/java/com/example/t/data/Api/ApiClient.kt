@@ -1,6 +1,7 @@
 package com.example.t.data.Api
 
 import com.example.t.data.Interfaces.ApiInterface
+import com.example.t.data.Interfaces.ApiPedidoInterface
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -29,5 +30,23 @@ object ApiClient {
             return retrofit.create(ApiInterface::class.java)
 
         }
+
+    val getPedido : ApiPedidoInterface
+    get(){
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        val client = OkHttpClient.Builder().addInterceptor(interceptor).build()
+
+        val retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(client)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+
+        return retrofit.create(ApiPedidoInterface::class.java)
+    }
 
 }
