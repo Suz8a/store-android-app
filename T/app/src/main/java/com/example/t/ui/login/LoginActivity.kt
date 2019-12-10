@@ -49,7 +49,6 @@ class LoginActivity : AppCompatActivity() {
                 startTrackerActivityTaller(folio.text.toString())
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
                 println("============"+dataList.get(0).id)
-
             }
 
 

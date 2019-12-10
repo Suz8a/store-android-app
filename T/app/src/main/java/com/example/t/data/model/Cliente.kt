@@ -1,14 +1,10 @@
 package com.example.t.data.model
 
-import com.github.kittinunf.fuel.core.ResponseDeserializable
-import com.google.gson.Gson
-
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
 data class Cliente(
-
     @Expose
     @SerializedName("id")
     val id: String,
