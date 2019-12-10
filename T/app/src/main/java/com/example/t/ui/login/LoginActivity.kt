@@ -49,19 +49,34 @@ class LoginActivity : AppCompatActivity() {
 
 
             login.setOnClickListener {
-                startTrackerActivityTaller(folio.text.toString())
+
                 Toast.makeText(applicationContext,folio.text,Toast.LENGTH_LONG).show()
                 val folioPedido = folio.text.toString()
+                var estadoTaller:String = ""
+                var estadoTienda:String =""
+                var estado:String = ""
+
+                for ( item in pedidos ){
+                    if(item.folio.equals(folioPedido)){
+                        estadoTaller = item.estado_taller
+                        estadoTienda = item.estado_tienda
+                        estado = item.estado
+                    }
+
+                }
+
+                if(estado.equals("En proceso"))
+                    startTrackerActivityTaller(folio.text.toString())
+                if(estadoTienda.equals("Enviar joya"))
+                    startTrackerActivityTienda()
+                if(estadoTienda.equals("Entregar joya"))
+                    startTrackerActivityTienda()
+
 
                 //println("============"+clientes)
                 //println("============"+pedidos.find { pedido ->  pedido.folio === folioPedido })
                 println("FOLIOOOOOOOO  "+folioPedido)
-                println("PEDIDDOOOOOO  "+pedidos[0].folio)
 
-                for ( item in pedidos ){
-                    if(item.folio.equals(folioPedido))
-                        println(item.estado_taller)
-                }
 
             }
 
